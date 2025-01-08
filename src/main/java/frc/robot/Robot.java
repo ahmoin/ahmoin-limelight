@@ -36,6 +36,7 @@ public class Robot extends TimedRobot {
     if (kUseLimelight) {
       // Get the robot's estimated pose (position & orientation) in the blue alliance coordinate system
       // This uses AprilTags detected by the Limelight camera to determine the robot's location
+      // MegaTag
       var llMeasurement = LimelightHelpers.getBotPoseEstimate_wpiBlue("limelight");
 
       // If we successfully got a pose estimate from the Limelight
@@ -52,7 +53,7 @@ public class Robot extends TimedRobot {
         // - Handles latency compensation using the timestamp to "rewind" and apply update
 
         m_robotContainer.drivetrain.addVisionMeasurement(
-          llMeasurement.pose, // Position & rotation from vision (x,y,rotation)
+          llMeasurement.pose, // Position & rotation from vision (x, y, rotation)
           Utils.fpgaToCurrentTime(llMeasurement.timestampSeconds) // When image was captured
           );
       }
